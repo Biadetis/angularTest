@@ -1,0 +1,77 @@
+@if(dialogActive) {
+<div class="dialog">
+  <div class="inputForm">
+    <div class="fieldInput">
+      <span> Name </span>
+      <input class="inputBox" [(ngModel)]="itemName" #ctrl="ngModel" required />
+    </div>
+
+    <div class="fieldInput">
+      <span> Quantity </span>
+      <input
+        class="inputBox"
+        [(ngModel)]="itemQuantity"
+        #ctrl="ngModel"
+        required
+      />
+    </div>
+    <div class="fieldInput">
+      <span> Price </span>
+      <input
+        class="inputBox"
+        [(ngModel)]="itemPrice"
+        #ctrl="ngModel"
+        required
+      />
+    </div>
+    <div class="buttons">
+      <button class="saveButton" (click)="saveItem()">Save Item</button>
+      <button class="cancelButton" (click)="dialogSwitch(false)">Cancel</button>
+    </div>
+  </div>
+</div>
+}
+<div class="main">
+  <h1 class="header">Order</h1>
+  <div class="searchBar">
+    <input
+      [(ngModel)]="searchString"
+      placeholder="Search"
+      (keyup.enter)="onSearch()"
+      #ctrl="ngModel"
+      class="inputSearch"
+      required
+    />
+  </div>
+
+  <div class="itemLine">
+    <div class="itemColH">NAME</div>
+    <div class="itemColH">QUANTITY</div>
+    <div class="itemColH">PRICE</div>
+    <div class="itemColH">TOTAL PRICE</div>
+    <div class="itemColH">FUNCTION</div>
+  </div>
+
+  @for (product of searchResult; track product.name) {
+
+  <div class="itemLine">
+    <div class="itemCol">
+      {{ product.name }}
+    </div>
+    <div class="itemCol">
+      {{ product.quantity }}
+    </div>
+    <div class="itemCol">
+      {{ product.price }}
+    </div>
+    <div class="itemCol">
+      {{ product.quantity * product.price }}
+    </div>
+    <div class="itemCol">
+      <a href="#" class="editButton" (click)="editItem(product)">edit</a>
+      <a href="#" class="deleteButton" (click)="deleteItem(product)">delete</a>
+    </div>
+  </div>
+  }
+  <button (click)="dialogSwitch(true)" class="inputButton">ADD ITEM</button>
+</div>
