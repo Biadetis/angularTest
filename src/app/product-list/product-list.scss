@@ -2,9 +2,9 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: 0 auto;
   padding: 20px;
-  background-color: #f9f9fb;
+  background-color: #f3f3f3;
   border-radius: 10px;
-  max-width: 80%;
+  max-width: 90%;
   box-shadow: 0 0.25rem 1rem 0 gray;
   position: relative;
   margin-top: 2rem;
@@ -31,7 +31,7 @@
 }
 .itemLine {
   display: grid;
-  grid-template-columns: 1fr 0.5fr 0.5fr 0.6fr 0.7fr;
+  grid-template-columns: 0.3fr 0.7fr 0.4fr 0.4fr 0.4fr 0.3fr 0.4fr;
   gap: 40px;
   padding: 10px 15px;
   border-bottom: 1px solid #eee;
@@ -40,7 +40,7 @@
   border-radius: 6px;
   margin-bottom: 2px;
   border: 1px solid rgb(181, 181, 181);
-  // box-shadow: 0 3px 5px 0px gray;
+  // box-shadow: 0 1px 3px 0px gray;
 }
 
 .itemColH {
@@ -58,13 +58,11 @@
   background-color: rgb(189, 189, 189);
   border-radius: 50px;
   transition: 0.4s;
-  transform: scale(1.2);
-  -webkit-transform: scale(1.2);
 }
 
 .editButton:hover {
   background-color: rgb(161, 161, 161);
-  // border: 1px solid rgb(161, 161, 161);
+  // border: 1px 1px 1px solid rgb(161, 161, 161);
 }
 
 .deleteButton {
@@ -88,6 +86,7 @@
   padding: 6px;
   border-radius: 10px;
   box-shadow: 0 1px 4px 0px gray;
+  font-family: FreeMono, monospace;
 }
 .inputForm {
   padding: 20px;
@@ -101,6 +100,14 @@
   box-shadow: 0 0.25rem 1rem 0 rgb(220, 220, 220);
 }
 
+.dialogHeader {
+  display: flex;
+  font-size: 2rem;
+  font-weight: 600;
+  justify-content: center;
+  color: rgb(72, 72, 72);
+}
+
 .fieldInput {
   display: flex;
   flex-direction: column;
@@ -108,10 +115,26 @@
   gap: 6px;
 }
 
+.inputButton {
+  margin: 20px;
+  padding: 25px 5px;
+  font-size: 1;
+  background-color: rgb(176, 193, 255);
+  border-radius: 100px;
+  font-weight: 600;
+  transition: 0.4s;
+  color: white;
+}
+
+.inputButton:hover {
+  background-color: rgb(133, 159, 255);
+}
+
 .saveButton {
   padding: 13px 3px;
   background-color: #4caf50;
-  color: white;
+  color: rgb(233, 233, 233);
+  // color: white;
   border: none;
   border-radius: 8px;
   font-size: 13px;
@@ -131,6 +154,7 @@
   box-shadow: 0 3px 5px 0px gray;
   margin-right: 1rem;
   transition: 0.4s;
+  color: rgb(233, 233, 233);
 }
 
 .saveButton:hover {
@@ -159,24 +183,3 @@
   backdrop-filter: blur(4px);
   font-family: "Gill Sans", sans-serif;
 }
-
-.inputButton {
-  margin: 20px;
-  padding: 25px 5px;
-  font-size: 1;
-  background-color: rgb(218, 226, 255);
-  border-radius: 100px;
-  font-weight: 600;
-  transition: 0.4s;
-}
-
-.inputButton:hover {
-  background-color: rgb(172, 190, 255);
-}
-
-// @media (mind-width: 1025px) {
-//   .inputForm {
-//     left: calc(100vw / 2 - 300px / 2);
-//     top: calc(100vw / 2 - 600px);
-//   }
-// }

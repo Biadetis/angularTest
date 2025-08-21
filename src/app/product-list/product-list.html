@@ -1,26 +1,36 @@
-<!-- 5 9 1 6 -->
 @if(dialogActive) {
 <div class="dialog">
   <div class="inputForm">
     <div class="fieldInput">
-      <span> Name </span>
-      <input class="inputBox" [(ngModel)]="itemName" #ctrl="ngModel" required />
+      <span> </span>
+      <h1 class="dialogHeader">{{ dialogHeader }}</h1>
     </div>
-
     <div class="fieldInput">
-      <span> Quantity </span>
+      <span> </span>
       <input
         class="inputBox"
-        [(ngModel)]="itemQuantity"
+        [(ngModel)]="itemName"
+        placeholder="name"
         #ctrl="ngModel"
         required
       />
     </div>
     <div class="fieldInput">
-      <span> Price </span>
+      <span> </span>
+      <input
+        class="inputBox"
+        [(ngModel)]="itemQuantity"
+        placeholder="quantity"
+        #ctrl="ngModel"
+        required
+      />
+    </div>
+    <div class="fieldInput">
+      <span> </span>
       <input
         class="inputBox"
         [(ngModel)]="itemPrice"
+        placeholder="price"
         #ctrl="ngModel"
         required
       />
@@ -33,7 +43,7 @@
 </div>
 }
 <div class="main">
-  <h1 class="header">Order</h1>
+  <h1 class="header">Product list</h1>
   <div class="searchBar">
     <input
       [(ngModel)]="searchString"
@@ -46,16 +56,21 @@
   </div>
 
   <div class="itemLine">
+    <div class="itemColH">ID</div>
     <div class="itemColH">NAME</div>
     <div class="itemColH">QUANTITY</div>
     <div class="itemColH">PRICE</div>
     <div class="itemColH">TOTAL PRICE</div>
-    <div class="itemColH">FUNCTION</div>
+    <div class="itemColH">IN STOCK</div>
+    <div class="itemColH">FUNCTIONS</div>
   </div>
 
-  @for (product of searchResult; track product.name) {
+  @for (product of productList; track product.name) {
 
   <div class="itemLine">
+    <div class="itemCol">
+      {{ product.id }}
+    </div>
     <div class="itemCol">
       {{ product.name }}
     </div>
@@ -69,10 +84,25 @@
       {{ product.quantity * product.price }}
     </div>
     <div class="itemCol">
-      <a href="#" class="editButton" (click)="editItem(product)">edit</a>
+      {{ product.inStock }}
+    </div>
+    <div class="itemCol">
+      <a
+        href="#"
+        class="editButton"
+        (click)="editItem(product); dialogHeader = 'Edit Item'"
+        >edit</a
+      >
       <a href="#" class="deleteButton" (click)="deleteItem(product)">delete</a>
     </div>
   </div>
   }
-  <button (click)="dialogSwitch(true)" class="inputButton">ADD ITEM</button>
+  <button
+    (click)="dialogSwitch(true); dialogHeader = 'New Item'"
+    class="inputButton"
+  >
+    ADD ITEM
+  </button>
+  <a (click)="loadProducts()" href="#" class="editButton">get item</a>
+  <!-- <a (click)="test()" href="#" class="editButton">test</a> -->
 </div>
